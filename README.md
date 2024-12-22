@@ -102,3 +102,29 @@ npm run dev
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Path Configuration
+
+This project uses path aliases for cleaner imports. The configuration is already set up in the tsconfig.json files, but if you're getting module resolution errors, make sure:
+
+1. Your IDE/editor recognizes the path aliases
+2. The TypeScript configuration is properly loaded
+3. For VS Code users, you might need to:
+   - Use the workspace version of TypeScript
+   - Reload the TypeScript server
+   - Restart VS Code
+
+Common solutions for path resolution issues:
+```bash
+# Clear TypeScript cache
+rm -rf node_modules/.cache
+
+# Reinstall dependencies
+rm -rf node_modules
+npm install
+
+# For the frontend
+cd frontend
+rm -rf node_modules
+npm install
+```

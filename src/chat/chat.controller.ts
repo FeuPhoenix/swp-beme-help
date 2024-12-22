@@ -6,11 +6,11 @@ import {
   Body,
   Req,
   UseGuards,
+  Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ChatService } from './chat.service';
 import { SendMessageDto } from './dto/sendmessage.dto';
-import { Put } from '@nestjs/common';
 import { UpdateMessageDto } from './dto/updatemessage.dto';
 
 @Controller('chats')
