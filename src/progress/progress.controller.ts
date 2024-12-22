@@ -13,28 +13,30 @@ import { ProgressService } from './progress.service';
 export class ProgressController {
   constructor(private readonly progressService: ProgressService) {}
 
-  @Post()
-  create(@Body() createDto: any) {
-    return this.progressService.create(createDto);
-  }
-
   @Get()
-  findAll() {
-    return this.progressService.findAll();
+  async getAllProgress() {
+    return this.progressService.getAllProgress();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.progressService.findOne(id);
+  @Get(':userId')
+  async getUserProgress(@Param('userId') userId: string) {
+    return this.progressService.getUserProgress(userId);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateDto: any) {
-    return this.progressService.update(id, updateDto);
+  @Put(':userId/:courseId')
+  async updateProgress(
+    @Param('userId') userId: string,
+    @Param('courseId') courseId: string,
+    @Body() data: any
+  ) {
+    return this.progressService.updateProgress(userId, courseId, data);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.progressService.remove(id);
+  @Get(':userId/:courseId/completion')
+  async getCompletion(
+    @Param('userId') userId: string,
+    @Param('courseId') courseId: string
+  ) {
+    return this.progressService.calculateCompletion(userId, courseId);
   }
 }
